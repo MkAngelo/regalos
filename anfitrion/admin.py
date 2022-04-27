@@ -13,4 +13,12 @@ class AnfitrionAdmin(admin.ModelAdmin):
     ]
 admin.site.register(Anfitrion, AnfitrionAdmin)
 
-admin.site.register(Evento)
+class EventoAdmin(admin.ModelAdmin):
+    list_display = [
+        'pk',
+        'date', #FALTA EL LUGAR
+        'time',
+        'anfitrion',
+        'festejado'
+    ]
+admin.site.register(Evento, EventoAdmin)

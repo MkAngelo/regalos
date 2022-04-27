@@ -8,12 +8,12 @@ from .models import CustomUser
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email')
+        fields = ('first_name','last_name','age','username','email')
     
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email')
+        fields = ('first_name','last_name','age','username','email')
 
 # class AnfitrionForm(forms.Form):
 #     first_name = forms.CharField(min_length=2, max_length=50)

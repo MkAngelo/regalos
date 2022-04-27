@@ -6,10 +6,10 @@ class CustomUser(AbstractUser):
     age = models.PositiveIntegerField(null=False, default=18)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ('username',)
+    REQUIRED_FIELDS = ('first_name','last_name','age','username')
 
     def __str__(self):
-        return self.username
+        return self.first_name
 
 # class Evento(models.Model):
 #     # About Event

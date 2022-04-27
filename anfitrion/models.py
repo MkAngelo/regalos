@@ -23,6 +23,7 @@ class Evento(models.Model):
     date = models.DateField(blank=False)
     time = models.TimeField(blank=False)
     guests = models.TextField(max_length=2000)
+    address = models.TextField(max_length=500)
     
     anfitrion = models.ForeignKey(Anfitrion, on_delete=models.CASCADE, null=False, related_name="anfitrion_user_set")
     festejado = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=False, related_name="cliente_user_set")
