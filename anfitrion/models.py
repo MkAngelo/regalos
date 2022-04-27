@@ -26,7 +26,6 @@ class Evento(models.Model):
     address = models.TextField(max_length=500)
     
     anfitrion = models.ForeignKey(Anfitrion, on_delete=models.CASCADE, null=False, related_name="anfitrion_user_set")
-    #festejado = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=False, related_name="cliente_user_set")
     festejado_first_name = models.CharField(max_length=50, blank=False, null=False)
     festejado_last_name = models.CharField(max_length=50, blank=False, null=False)
     festejado_age = models.PositiveIntegerField(null=False, default=0)

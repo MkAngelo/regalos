@@ -1,21 +1,9 @@
 """ANFITRION USER"""
 
-from this import d
 from .models import Anfitrion
 from django import forms
 
 class AnfitrionForm(forms.Form):
-    # model = Anfitrion
-    # fields = (
-    #     'email',
-    #     'first_name',
-    #     'last_name',
-    #     'age',
-    #     'phone_number',
-    #     'username',
-    #     'password'
-    # )
-
     username = forms.CharField(min_length=4, max_length=50)
 
     password = forms.CharField(
@@ -65,16 +53,3 @@ class AnfitrionForm(forms.Form):
         data.pop('password_confirmation')
 
         anfitrion = Anfitrion.objects.update_or_create(**data)
-
-        
-
-# class AnfitrionForm(forms.Form):
-#     first_name = forms.CharField(min_length=2, max_length=50)
-#     last_name = forms.CharField(min_length=2, max_length=50)
-#     email = forms.CharField(
-#         min_length=6,
-#         max_length=70,
-#         widget=forms.EmailInput()
-#     )
-#     age = forms.IntegerField()
-#     phone_number = forms.CharField(max_length=15)
