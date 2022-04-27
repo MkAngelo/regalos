@@ -16,9 +16,12 @@ admin.site.register(Anfitrion, AnfitrionAdmin)
 class EventoAdmin(admin.ModelAdmin):
     list_display = [
         'pk',
+        'anfitrion',
         'date', #FALTA EL LUGAR
         'time',
-        'anfitrion',
-        'festejado'
+        'address',
+        'festejado_first_name',
+        'festejado_last_name',
+        'festejado_age'
     ]
 admin.site.register(Evento, EventoAdmin)

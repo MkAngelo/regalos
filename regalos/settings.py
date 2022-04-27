@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'bootstrap5',
     'anfitrion',
-    'cliente'
 ]
 
 MIDDLEWARE = [
