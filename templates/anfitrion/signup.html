@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block head_content %}
+    <title>Crea un nuevo evento</title>
+{% endblock head_content %}
+{% block container %}
+
+    {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endif %}
+
+    <form action="{% url "anfitrion:signup" %}" method="POST"> 
+        {% csrf_token %}
+        <h3>Creando un nuevo Anfitrion</h3>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+            <label for="floatingInput">Email</label>
+        </div> 
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Ingresa tu nombre" id="floatingTextarea" name="first_name"></textarea>
+            <label for="floatingTextarea">Nombre(s)</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Ingresa tus apellidos" id="floatingTextarea" name="last_name"></textarea>
+            <label for="floatingTextarea">Apellidos</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Crea un username" id="floatingTextarea" name="username"></textarea>
+            <label for="floatingTextarea">Username</label>
+        </div>
+        <div class="input-group">
+            <span class="input-group-text">Edad y Numero telefonico</span>
+            <input type="text" aria-label="Edad" class="form-control" placeholder="45" name="age">
+            <input type="text" aria-label="Telefono" class="form-control" placeholder="5543789076" name="phone">
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" placeholder="Password" name="password">
+            <label for="password">Password</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" placeholder="Confirmar Password" name="password_confirmation">
+            <label for="password_confirmation">Confirmar Password</label>
+        </div>
+        <br>
+        <div class="d-grid gap-2">
+            <button class="btn btn-success" type="submit">Crear Usuario</button>
+        </div>
+    </form>
+{% endblock container %}
