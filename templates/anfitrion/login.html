@@ -26,12 +26,6 @@
                 <p class="alert alert-danger"><strong>Upps... </strong> {{ error }}</p>
                 {% endif %}
 
-                {% for msg in messages %}
-                    <div class="alert alert-success" role="alert">
-                        <strong>Bienvenid@</strong> {{msg}}
-                    </div>
-                {% endfor %}
-
                 <div class="form-floating">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required="true">
                     <label for="floatingInput">Email</label>

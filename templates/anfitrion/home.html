@@ -6,15 +6,48 @@
 
 {% block container %}
     {% load static %}
-    <form action="{% url 'anfitrion:signup' %}" method="get">
-        <div class="mt-5" style="text-align: center">
-            <h3>ESTAS LIST@ PARA CREAR EL MEJOR EVENTO JAMAS ANTES VISTO!</h3>
-            <img src="{% static 'img/party.webp' %}" class="img-fluid" alt="Creamos la mejor fiesta para ti">
-        </div>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <br><br><br>
-            <button class="btn btn-success" type="submit">COMENZAR</button>
-        </div>
-    </form>
     
+    <img src="{% static 'img/perfil.jpg' %}" class="rounded-circle mx-auto d-block border border-4" width="15%" alt="Foto de perfil">
+    <div class="card" style="text-align: center">
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Nombre de la persona</p>
+            <footer class="blockquote-footer"><cite title="Source Title">Hola, como estas!</cite></footer>
+            <a href="#" class="btn btn-warning" role="button" data-bs-toggle="button">CREAR!</a>
+            <br><br><br><br>
+            <p>EVENTOS CREADOS</p>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre del festejado</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Codigo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry the Bird</td>
+                    <td>@twitter</td>
+                    <td>@fat</td>
+                  </tr>
+                </tbody>
+            </table>
+          </blockquote>
+        </div>
+        
+    </div>
 {% endblock %}
