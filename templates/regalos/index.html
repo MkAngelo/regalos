@@ -1,0 +1,40 @@
+{% extends 'regalos/base.html' %}
+
+{% block head_content %}
+    <title>Inicio</title>
+{% endblock head_content %}
+
+{% block container %}
+    {% load static %}
+    <div style="text-align: center;">
+        <h1>Crea recuerdos memorables para ti y tus seres queridos.</h1>
+    </div>
+    <br><br>
+    <div class="row" style="text-align: center;">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Invitados</h5>
+              <p class="card-text">
+                  Los invitados cuentan con un codigo de acceso, con dicho codigo podran ver la lista de regalos personalizada del
+                  festejado para comprar el mejor y hacer de eso un momento inigualable.
+              </p>
+              <a href="#" class="btn btn-info">Si, tengo mi codigo!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Anfitriones</h5>
+              <p class="card-text">
+                  Si estas registrado en la plataforma, puedes crear nuevos eventos asi como modificar tus eventos existentes, para 
+                  disfrutar de la compañía de tus seres queridos.
+              </p>
+              <a href="#" class="btn btn-info">Tengo una cuenta!</a>
+              <a href="#" class="btn btn-info">Crear una cuenta!</a>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock container %}
