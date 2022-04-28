@@ -4,7 +4,7 @@
 {% endblock head_content %}
 {% block container %}
     {% load static %}
-
+    <br><br><br><br>
     <div class="row" style="text-align: center;">
 
         <div class="col-sm-6">
@@ -16,7 +16,7 @@
             <form action="{% url "anfitrion:signup" %}" method="POST"> 
                 {% csrf_token %}
                 
-                <h3>Creando un nuevo Anfitrion!</h3><br>
+                <h3>CREANDO UNA NUEVA CUENTA!</h3><br>
 
                 {% if error %}
                 <p class="alert alert-danger"><strong>Upps... </strong> {{ error }}</p>
@@ -52,7 +52,7 @@
                 </div>
                 <br>
                 <div class="d-grid gap-2">
-                    <button class="btn btn-success" type="submit">Crear Usuario</button>
+                    <button class="btn btn-info" type="submit">CREAR CUENTA</button>
                 </div>
             </form>
         </div>

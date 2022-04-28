@@ -1,1 +1,51 @@
-<h1>login</h1>
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Ingresar</title>
+{% endblock head_content %}
+
+{% block container %}
+
+    {% load static %}
+    <div class="row" style="text-align: center;">
+
+        <div class="col-sm-6">
+            <br><br><br>
+            <img src="{% static 'img/hi5.png' %}" class="d-block w-100" alt="welcome" >
+        </div>
+
+        <div class="col-sm-6">
+
+            <form action="{% url "anfitrion:login" %}" method="POST"> 
+                {% csrf_token %}
+                
+                <br><br><br><br><br>
+                <h3>INGRESA A TU CUENTA</h3><br>
+
+                {% if error %}
+                <p class="alert alert-danger"><strong>Upps... </strong> {{ error }}</p>
+                {% endif %}
+
+                {% for msg in messages %}
+                    <div class="alert alert-success" role="alert">
+                        <strong>Bienvenid@</strong> {{msg}}
+                    </div>
+                {% endfor %}
+
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" required="true">
+                    <label for="floatingInput">Email</label>
+                </div> 
+                <div class="form-floating">
+                    <input type="password" class="form-control" placeholder="Password" name="password" required="true">
+                    <label for="password">Password</label>
+                </div>
+                <br>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-info" type="submit">INGRESAR</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock container %}
