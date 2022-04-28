@@ -1,17 +1,27 @@
 
 from django.urls import reverse_lazy
-from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView, FormView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import AnfitrionForm
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 
 
-class MenuView(TemplateView):
+class MenuView(LoginRequiredMixin,TemplateView):
     template_name = 'anfitrion/event.html'
 
-class LoginView(auth_views.LoginView):
-    """Login view."""
-
-    template_name = 'anfitrion/login.html'
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, email=email, password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('anfitrion:menu')
+        else: 
+            return render(request, 'anfitrion/login.html', {'error': 'usuario o password invalido'})
+    return render(request, 'anfitrion/login.html')    
 
 class SignUpView(FormView):
     """

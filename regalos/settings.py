@@ -137,8 +137,13 @@ STATICFILES_FINDERS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+#REDIRECT
+LOGIN_URL = '/anfitrion/login/'
+LOGIN_REDIRECT_URL = '/anfitrion/menu'
+
 #AUTH_USER_MODEL = 'anfitrion.CustomUser'
-AUTH_USER_MODEL = 'users.CustomUser'
+#AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'anfitrion.Anfitrion'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
