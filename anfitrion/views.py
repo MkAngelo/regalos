@@ -4,12 +4,17 @@ from django.views.generic import TemplateView, FormView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import AnfitrionForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 
 class MenuView(LoginRequiredMixin,TemplateView):
     template_name = 'anfitrion/home.html'
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('anfitrion:login')
 
 def login_view(request):
     if request.method == 'POST':
