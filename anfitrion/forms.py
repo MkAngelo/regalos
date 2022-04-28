@@ -33,6 +33,7 @@ class AnfitrionForm(forms.Form):
         username_taken = Anfitrion.objects.filter(username=username).exists()
         if username_taken:
             raise forms.ValidationError('El username ya existe, elija otro')
+            #return "El username ya existe, elije otro."
         return username
 
     def clean(self):
@@ -44,6 +45,7 @@ class AnfitrionForm(forms.Form):
 
         if password != password_confirmation:
             raise forms.ValidationError('Passwords do not match.')
+            #return "Los passwords no coinciden, revisalos."
         
         return data
 

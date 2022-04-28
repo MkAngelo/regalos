@@ -21,6 +21,11 @@ class SignUpView(FormView):
     form_class = AnfitrionForm
     success_url = reverse_lazy('anfitrion:login')
 
+    def form_invalid(self, form):
+        context = self.get_context_data(form=form)
+        context.update({'error': 'revisa que tus datos sean correctos.'})
+        return self.render_to_response(context)
+
     def form_valid(self,form):
         form.save()
         return super().form_valid(form)
