@@ -54,4 +54,14 @@ class AnfitrionForm(forms.Form):
         data = self.cleaned_data
         data.pop('password_confirmation')
 
-        anfitrion = Anfitrion.objects.update_or_create(**data)
+        # anfitrion = Anfitrion.objects.create(
+        #     username=data['username'],
+        #     password=data['password'],
+        #     first_name=data['first_name'],
+        #     last_name=data['last_name'],
+        #     email=data['email'],
+        #     age=data['age'],
+        #     phone=data['phone']
+        # )
+        # anfitrion.save()
+        anfitrion = Anfitrion.objects.create_user(**data)
