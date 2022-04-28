@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 
 
 class MenuView(LoginRequiredMixin,TemplateView):
-    template_name = 'anfitrion/event.html'
+    template_name = 'anfitrion/home.html'
 
 def login_view(request):
     if request.method == 'POST':

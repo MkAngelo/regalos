@@ -1,1 +1,20 @@
-<h1>Home xd</h1>
+{% extends "anfitrion/base.html" %}
+
+{% block head_content %}
+    <title>Regalos.mx</title>
+{% endblock %}
+
+{% block container %}
+    {% load static %}
+    <form action="{% url 'anfitrion:signup' %}" method="get">
+        <div class="mt-5" style="text-align: center">
+            <h3>ESTAS LIST@ PARA CREAR EL MEJOR EVENTO JAMAS ANTES VISTO!</h3>
+            <img src="{% static 'img/party.webp' %}" class="img-fluid" alt="Creamos la mejor fiesta para ti">
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <br><br><br>
+            <button class="btn btn-success" type="submit">COMENZAR</button>
+        </div>
+    </form>
+    
+{% endblock %}
