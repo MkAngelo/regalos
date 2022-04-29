@@ -1,17 +1,37 @@
 from django.contrib import admin
 from .models import Anfitrion, Evento
+from users.models import CustomUser
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 
 
-class AnfitrionAdmin(admin.ModelAdmin):
+class AnfitrionAdmin(UserAdmin):
     list_display = [
         'pk',
         'first_name',
         'last_name',
         'age',
         'email',
-        'phone'
+        'phone',
+        'is_staff',
+        'is_superuser'
     ]
-admin.site.register(Anfitrion, AnfitrionAdmin)
+    list_editable = ('phone',)
+    search_fields = (
+        'first_name',
+        'last_name',
+        'email',
+        'phone'
+    )
+    fieldsets = (
+        ('Anfitrion',{
+            'fields': (
+                ('first_name', 'last_name', 'age'),
+                ('email', 'phone')
+            ),
+        }),
+    )
+#admin.site.register(Anfitrion, AnfitrionAdmin)
 
 class EventoAdmin(admin.ModelAdmin):
     list_display = [
@@ -37,3 +57,5 @@ class EventoAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(Evento, EventoAdmin)
+# admin.site.unregister(User)
+admin.site.register(Anfitrion, AnfitrionAdmin)
