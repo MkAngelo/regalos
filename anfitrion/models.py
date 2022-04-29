@@ -33,6 +33,7 @@ class Evento(models.Model):
     lista_regalo = models.ManyToManyField(ListaDeRegalos)
     card = models.CharField(max_length=19)
     cvv = models.CharField(max_length=3)
+    terminado = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.event_type)

@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from listaDeRegalos.models import ListaDeRegalos
 from .models import Evento, Anfitrion
+import datetime
 
 
 @login_required
@@ -35,6 +36,7 @@ def create_view(request):
         form = EventForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
+            
             evento = Evento.objects.create(
                 anfitrion = me,
                 festejado_first_name = data['festejado_first_name'],
@@ -46,8 +48,11 @@ def create_view(request):
                 card = data['card'],
                 cvv = data['cvv'],
                 address = data['address'],
-                guests = data['guests']
+                guests = data['guests'],
+                terminado = False
             )
+            if data['date'] <= datetime.date.today():
+                evento.terminado = True
             evento.lista_regalo.set(lista_regalo)
             evento.save()
             return redirect('anfitrion:confirmar')
