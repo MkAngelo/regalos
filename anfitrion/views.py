@@ -19,10 +19,15 @@ def confirm_view(request):
 
 class MenuView(LoginRequiredMixin,TemplateView):
     template_name = 'anfitrion/home.html'
-
-@login_required #Puedes usar los formularios de django
-def create_view(request):
     
+@login_required
+def menu_view(request):
+    me = Anfitrion.objects.get(email=request.user.email)
+    context = Evento.objects.filter(anfitrion=me)
+    return render(request, 'anfitrion/home.html', {'eventos': context})
+
+@login_required
+def create_view(request):
     if request.method == "POST":
         me = Anfitrion.objects.get(email=request.user.email)
         tipo = request.POST['event_type']

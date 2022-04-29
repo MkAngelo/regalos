@@ -15,37 +15,31 @@
             <footer class="blockquote-footer"><cite title="Source Title">Hola, como estas!</cite></footer>
             <a href="{% url 'anfitrion:crear' %}" class="btn btn-warning" role="button">CREAR!</a>
             <br><br><br><br>
-            <p>EVENTOS CREADOS</p>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre del festejado</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Codigo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@fat</td>
-                  </tr>
-                </tbody>
-            </table>
+
+            {% if eventos %}
+              <p>EVENTOS CREADOS</p>
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre del festejado</th>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Codigo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for evento in eventos %}
+                      <tr>
+                          <td>{{ evento.festejado_first_name }} {{ evento.festejado_last_name }}</td>
+                          <td>{{ evento.date }}</td>
+                          <td>{{ evento.id }}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            {% else %}
+              <h3>Aun no eres anfitrion de ningun evento, crea uno hoy mismo!</h3>
+            {% endif %}
+            
           </blockquote>
         </div>
         

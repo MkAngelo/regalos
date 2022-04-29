@@ -10,7 +10,7 @@ urlpatterns = [
     ),
     path(
         route='menu/',
-        view=views.MenuView.as_view(),
+        view=views.menu_view,
         name='menu'
     ),
     path(
