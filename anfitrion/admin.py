@@ -40,7 +40,8 @@ class EventoAdmin(admin.ModelAdmin):
         'address',
         'festejado_first_name',
         'festejado_last_name',
-        'festejado_age'
+        'festejado_age',
+        'terminado'
     ]
     list_display_links = ('pk','event_type')
     list_editable = ('festejado_first_name',"festejado_last_name",'festejado_age')

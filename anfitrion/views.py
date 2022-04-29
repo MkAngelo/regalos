@@ -24,7 +24,7 @@ class MenuView(LoginRequiredMixin,TemplateView):
 @login_required
 def menu_view(request):
     me = Anfitrion.objects.get(email=request.user.email)
-    context = Evento.objects.filter(anfitrion=me)
+    context = Evento.objects.filter(anfitrion=me).order_by('terminado')
     return render(request, 'anfitrion/home.html', {'eventos': context})
 
 @login_required

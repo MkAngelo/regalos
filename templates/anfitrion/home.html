@@ -21,6 +21,7 @@
               <table class="table">
                   <thead>
                     <tr>
+                      <th scope="col">Tipo de evento</th>
                       <th scope="col">Nombre del festejado</th>
                       <th scope="col">Fecha</th>
                       <th scope="col">Codigo</th>
@@ -30,7 +31,21 @@
                   <tbody>
                     {% for evento in eventos %}
                       <tr>
-                        
+                          <td>
+                            {% if evento.event_type == 'BO' %}
+                              Boda
+                            {% elif evento.event_type == 'XV' %}
+                              XV Años
+                            {% elif evento.event_type == 'BA' %}
+                              Bautizo
+                            {% elif evento.event_type == 'IN' %}
+                              Infantil
+                            {% elif evento.event_type == 'PH' %}
+                              Para Él
+                            {% elif evento.event_type == 'PM' %}
+                              Para Ella
+                            {% endif %}
+                          </td>
                           <td>{{ evento.festejado_first_name }} {{ evento.festejado_last_name }}</td>
                           <td>{{ evento.date }} </td>
                           <td>{{ evento.id }}</td>
