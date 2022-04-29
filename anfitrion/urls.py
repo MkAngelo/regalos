@@ -23,4 +23,9 @@ urlpatterns = [
         view=views.logout_view,
         name='logout'
     ),
+    path(
+        route='crear/',
+        view=views.create_view,
+        name='crear'
+    ),
 ]

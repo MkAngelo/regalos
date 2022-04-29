@@ -1,6 +1,7 @@
 
 from django.db import models
 from users.models import CustomUser
+from listaDeRegalos.models import ListaDeRegalos
 
 class Anfitrion(CustomUser, models.Model):
     phone = models.CharField(max_length=15, blank=False, null=False)
@@ -29,6 +30,9 @@ class Evento(models.Model):
     festejado_first_name = models.CharField(max_length=50, blank=False, null=False)
     festejado_last_name = models.CharField(max_length=50, blank=False, null=False)
     festejado_age = models.PositiveIntegerField(null=False, default=0)
+    lista_regalo = models.ManyToManyField(ListaDeRegalos)
+    card = models.CharField(max_length=19)
+    cvv = models.CharField(max_length=3)
 
     def __str__(self):
         return str(self.event_type)

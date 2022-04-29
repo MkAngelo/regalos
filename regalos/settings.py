@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'bootstrap5',
     'anfitrion',
-    'listaDeRegalos'
+    'listaDeRegalos',
 ]
 
 MIDDLEWARE = [

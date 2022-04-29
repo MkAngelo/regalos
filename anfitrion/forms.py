@@ -1,6 +1,7 @@
 """ANFITRION USER"""
 
-from .models import Anfitrion
+from multiprocessing import Event
+from .models import Anfitrion, Evento
 from django import forms
 
 class AnfitrionForm(forms.Form):
@@ -55,3 +56,23 @@ class AnfitrionForm(forms.Form):
         data.pop('password_confirmation')
 
         anfitrion = Anfitrion.objects.create_user(**data)
+
+class EventForm(forms.ModelForm):
+    """Form to Event"""
+    class Meta:
+        model = Evento
+        fields = (
+            'id',
+            'event_type',
+            'date',
+            'time',
+            'guests',
+            'address',
+            'anfitrion',
+            'festejado_first_name',
+            'festejado_last_name',
+            'festejado_age',
+            'lista_regalo',
+            'card',
+            'cvv'
+        )

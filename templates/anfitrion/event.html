@@ -1,19 +1,115 @@
-{% extends "base.html" %}
+{% extends "anfitrion/base.html" %}
 
 {% block head_content %}
-    <title>Bienvenido</title>
+    <title>Crear evento</title>
 {% endblock %}
 
 {% block container %}
     {% load static %}
-    <form action="{% url 'anfitrion:signup' %}" method="get">
-        <div class="mt-5" style="text-align: center">
-            <h3>ESTAS LIST@ PARA CREAR EL MEJOR EVENTO JAMAS ANTES VISTO!</h3>
-            <img src="{% static 'img/party.webp' %}" class="img-fluid" alt="Creamos la mejor fiesta para ti">
-        </div>
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <br><br><br>
-            <button class="btn btn-success" type="submit">COMENZAR</button>
+    <h1>Crear evento</h1>
+    {% if error %}
+        <p class="alert alert-danger"><strong>Upps... </strong> {{ error }}</p>
+    {% endif %}
+    <form action="{% url 'anfitrion:crear' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-6">
+                <div>
+                    <h4>Datos del festejad@</h4>
+                    <!-- nombre -->
+                    <div class="mb-3">
+                        <label for="festejado_first_name" class="form-label">Nombre(s) del festejad@</label>
+                        <input type="text" class="form-control" name='festejado_first_name' required="true">
+                    </div>
+                    <!-- apellidos -->
+                    <div class="mb-3">
+                        <label for="festejado_last_name" class="form-label">Apellidos del festejad@</label>
+                        <input type="text" class="form-control" name='festejado_last_name' required="true">
+                    </div>
+                    <!-- edad -->
+                    <div class="mb-3">
+                        <label for="festejado_age" class="form-label">Edad del festejad@</label>
+                        <input type="text" class="form-control" name='festejado_age' required="true">
+                    </div>
+                </div>
+            
+                <div>
+                    <h4>Datos del evento</h4>
+                    <!-- calendario -->
+                    <div class="col_one_third col_last c-azul">
+                        <label for="date">Fecha del evento</label>
+                        <input type="date" name="date"  class="sm-form-control" required="true">
+                    </div><br>
+                    <div class="col_one_third col_last c-azul">
+                        <label for="time">Hora del evento</label>
+                        <input type="time" name="time" required="true">
+                    </div> <br>
+                    <select class="form-select" name='event_type'>
+                        <option selected>Elige tu tipo de evento</option>
+                        <option value="BO">Boda</option>
+                        <option value="XV">XV años</option>
+                        <option value="BA">Bautizos</option>
+                        <option value="IN">Infantiles</option>
+                        <option value="PM">Para ella</option>
+                        <option value="PH">Para el</option>
+                      </select>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Direccion</label>
+                        <textarea class="form-control" name="address" rows="2" required="true"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="guests" class="form-label">Email de los invitados</label>
+                        <textarea class="form-control" name="guests" rows="2" placeholder="invitado1@mail.com, invitado2@hotmail.com, ..." required="true"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                {% comment %} <div>
+                    <h4>Tu lista de regalos</h4>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Tienda</th>
+                            <th scope="col">Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            </tr>
+                            <tr>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            </tr>
+                            <tr>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> {% endcomment %}
+                <div>
+                    <h4>
+                        Metodo de pago
+                        <img src="{% static 'img/tarjetas.jpeg' %}" width="10%" alt="...">
+                    </h4>
+                    <!-- card num -->
+                    <div class="mb-3">
+                        <label for="card" class="form-label">Numero de la tarjeta</label>
+                        <input type="text" class="form-control" name='card' required="true" placeholder="XXXX-XXXX-XXXX-XXXX">
+                    </div>
+                    <!-- cvv -->
+                    <div class="mb-3">
+                        <label for="cvv" class="form-label">CVV</label>
+                        <input type="text" class="form-control" name='cvv' required="true" placeholder="000">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Continuar</button>
+                </div>
+            </div>
         </div>
     </form>
     

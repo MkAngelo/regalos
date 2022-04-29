@@ -1,15 +1,66 @@
 
+import email
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, CreateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import AnfitrionForm
+from .forms import AnfitrionForm, EventForm
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
+from listaDeRegalos.models import ListaDeRegalos
+from .models import Evento, Anfitrion
 
 
 class MenuView(LoginRequiredMixin,TemplateView):
     template_name = 'anfitrion/home.html'
+
+@login_required
+def create_view(request):
+    if request.method == "POST":
+        me = Anfitrion.objects.get(email=request.user.email)
+        festejado_name = request.POST['festejado_first_name']
+        festejado_last = request.POST['festejado_last_name']
+        date = request.POST['date']
+        time = request.POST['time']
+        tipo = request.POST['event_type']
+        lista_regalo = ListaDeRegalos.objects.filter(type=tipo)
+        guests = request.POST['guests']
+        direc = request.POST['address']
+        card = request.POST['card']
+        cvv = request.POST['cvv']
+
+        try:
+            festejado_age = int(request.POST['festejado_age'])
+        except:
+            return render(request, 'anfitrion/event.html', {'error': 'La edad de tu invitado es incorrecta.'})
+
+        if festejado_age < 0 or festejado_age > 130:
+            return render(request, 'anfitrion/event.html', {'error': 'La edad de tu festejado esta fuera de los limites.'})
+        if guests == '':
+            return render(request, 'anfitrion/event.html', {'error': 'Olvidaste poner los emails de tus invitados.'})
+        if direc == '':
+            return render(request, 'anfitrion/event.html', {'error': 'Olvidaste poner tu direccion, ten cuidado.'})
+        if len(card) > 19 or len(card) < 19 or len(cvv) != 3:
+            return render(request, 'anfitrion/event.html', {'error': 'Metodo de pago rechazado, intente con otro.'})
+
+        evento = Evento.objects.create(
+            anfitrion = me,
+            festejado_first_name = festejado_name,
+            festejado_last_name = festejado_last,
+            festejado_age = festejado_age,
+            date = date,
+            time = time,
+            event_type = tipo,
+            card = card,
+            cvv = cvv,
+            address = direc,
+        )
+        evento.lista_regalo.set(lista_regalo)
+        evento.guests = guests
+        evento.save()
+        return redirect('anfitrion:menu')
+
+    return render(request, 'anfitrion/event.html')
 
 @login_required
 def logout_view(request):
