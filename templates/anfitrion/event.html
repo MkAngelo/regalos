@@ -7,9 +7,13 @@
 {% block container %}
     {% load static %}
     <h1>Crear evento</h1>
-    {% if error %}
-        <p class="alert alert-danger"><strong>Upps... </strong> {{ error }}</p>
+
+    {% if form.errors %}
+        {% for e in form.errors %}
+        <p class="alert alert-danger"><strong>Upps... tienes algunos erroes</strong></p>
+        {% endfor %}
     {% endif %}
+
     <form action="{% url 'anfitrion:crear' %}" method="post">
         {% csrf_token %}
         <div class="row">
@@ -19,17 +23,17 @@
                     <!-- nombre -->
                     <div class="mb-3">
                         <label for="festejado_first_name" class="form-label">Nombre(s) del festejad@</label>
-                        <input type="text" class="form-control" name='festejado_first_name' required="true">
+                        <input type="text" class="form-control {% if form.festejado_first_name.errors %}is-invalid{% endif %}" name='festejado_first_name' required="true" value="{% if form.errors %}{{ form.festejado_first_name.value }}{% endif %}">
                     </div>
                     <!-- apellidos -->
                     <div class="mb-3">
-                        <label for="festejado_last_name" class="form-label">Apellidos del festejad@</label>
-                        <input type="text" class="form-control" name='festejado_last_name' required="true">
+                        <label for="festejado_last_name" class="form-label {% if form.festejado_last_name.errors %}is-invalid{% endif %}">Apellidos del festejad@</label>
+                        <input type="text" class="form-control" name='festejado_last_name' required="true" value="{% if form.errors %}{{ form.festejado_last_name.value }}{% endif %}">
                     </div>
                     <!-- edad -->
                     <div class="mb-3">
-                        <label for="festejado_age" class="form-label">Edad del festejad@</label>
-                        <input type="text" class="form-control" name='festejado_age' required="true">
+                        <label for="festejado_age" class="form-label {% if form.festejado_age.errors %}is-invalid{% endif %}">Edad del festejad@</label>
+                        <input type="text" class="form-control" name='festejado_age' required="true" value="{% if form.errors %}{{ form.festejado_age.value }}{% endif %}">
                     </div>
                 </div>
             
@@ -38,13 +42,13 @@
                     <!-- calendario -->
                     <div class="col_one_third col_last c-azul">
                         <label for="date">Fecha del evento</label>
-                        <input type="date" name="date"  class="sm-form-control" required="true">
+                        <input type="date" name="date"  class="sm-form-control {% if form.date.errors %}is-invalid{% endif %}" required="true" value="{% if form.errors %}{{ form.date.value }}{% endif %}">
                     </div><br>
                     <div class="col_one_third col_last c-azul">
                         <label for="time">Hora del evento</label>
-                        <input type="time" name="time" required="true">
+                        <input type="time" name="time" required="true" class="{% if form.time.errors %}is-invalid{% endif %}" value="{% if form.errors %}{{ form.time.value }}{% endif %}">
                     </div> <br>
-                    <select class="form-select" name='event_type'>
+                    <select class="form-select {% if form.event_type.errors %}is-invalid{% endif %}" name='event_type' value="{% if form.errors %}{{ form.event_type.value }}{% endif %}">
                         <option selected>Elige tu tipo de evento</option>
                         <option value="BO">Boda</option>
                         <option value="XV">XV años</option>
@@ -55,11 +59,11 @@
                       </select>
                     <div class="mb-3">
                         <label for="address" class="form-label">Direccion</label>
-                        <textarea class="form-control" name="address" rows="2" required="true"></textarea>
+                        <textarea class="form-control {% if form.address.errors %}is-invalid{% endif %}" name="address" rows="2" required="true" value="{% if form.errors %}{{ form.address.value }}{% endif %}"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="guests" class="form-label">Email de los invitados</label>
-                        <textarea class="form-control" name="guests" rows="2" placeholder="invitado1@mail.com, invitado2@hotmail.com, ..." required="true"></textarea>
+                        <textarea class="form-control {% if form.guests.errors %}is-invalid{% endif %}" name="guests" rows="2" placeholder="invitado1@mail.com, invitado2@hotmail.com, ..." required="true" value="{% if form.errors %}{{ form.guests.value }}{% endif %}"></textarea>
                     </div>
                 </div>
             </div>
@@ -72,12 +76,12 @@
                     <!-- card num -->
                     <div class="mb-3">
                         <label for="card" class="form-label">Numero de la tarjeta</label>
-                        <input type="text" class="form-control" name='card' required="true" placeholder="XXXX-XXXX-XXXX-XXXX">
+                        <input type="text" class="form-control {% if form.card.errors %}is-invalid{% endif %}" name='card' required="true" placeholder="XXXX-XXXX-XXXX-XXXX" value="{% if form.errors %}{{ form.card.value }}{% endif %}">
                     </div>
                     <!-- cvv -->
                     <div class="mb-3">
                         <label for="cvv" class="form-label">CVV</label>
-                        <input type="text" class="form-control" name='cvv' required="true" placeholder="000">
+                        <input type="text" class="form-control {% if form.cvv.errors %}is-invalid{% endif %}" name='cvv' required="true" placeholder="000" value="{% if form.errors %}{{ form.cvv.value }}{% endif %}">
                     </div>
                     <button type="submit" class="btn btn-primary">Continuar</button>
                 </div>

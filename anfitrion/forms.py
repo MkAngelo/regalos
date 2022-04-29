@@ -57,22 +57,16 @@ class AnfitrionForm(forms.Form):
 
         anfitrion = Anfitrion.objects.create_user(**data)
 
-class EventForm(forms.ModelForm):
+class EventForm(forms.Form):
     """Form to Event"""
-    class Meta:
-        model = Evento
-        fields = (
-            'id',
-            'event_type',
-            'date',
-            'time',
-            'guests',
-            'address',
-            'anfitrion',
-            'festejado_first_name',
-            'festejado_last_name',
-            'festejado_age',
-            'lista_regalo',
-            'card',
-            'cvv'
-        )
+    event_type = forms.CharField(min_length=2, max_length=2, required=True)
+    date = forms.DateField(required=True)
+    time = forms.TimeField(required=True)
+    guests = forms.CharField(max_length=2000, required=True)
+    address = forms.CharField(max_length=500, required=True)
+
+    festejado_first_name = forms.CharField(max_length=50, min_length=3, required=True)
+    festejado_last_name = forms.CharField(max_length=50, min_length=3, required=True)
+    festejado_age = forms.IntegerField(min_value=0)
+    card = forms.CharField(min_length=19, max_length=19)
+    cvv = forms.CharField(min_length=3, max_length=3)
