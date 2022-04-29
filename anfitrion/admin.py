@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import Anfitrion, Evento
-from users.models import CustomUser
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
 
 
 class AnfitrionAdmin(UserAdmin):
@@ -31,7 +29,6 @@ class AnfitrionAdmin(UserAdmin):
             ),
         }),
     )
-#admin.site.register(Anfitrion, AnfitrionAdmin)
 
 class EventoAdmin(admin.ModelAdmin):
     list_display = [
@@ -57,5 +54,4 @@ class EventoAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(Evento, EventoAdmin)
-# admin.site.unregister(User)
 admin.site.register(Anfitrion, AnfitrionAdmin)
