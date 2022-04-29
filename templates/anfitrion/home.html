@@ -24,14 +24,23 @@
                       <th scope="col">Nombre del festejado</th>
                       <th scope="col">Fecha</th>
                       <th scope="col">Codigo</th>
+                      <th scope="col">Concluido</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for evento in eventos %}
                       <tr>
+                        
                           <td>{{ evento.festejado_first_name }} {{ evento.festejado_last_name }}</td>
-                          <td>{{ evento.date }}</td>
+                          <td>{{ evento.date }} </td>
                           <td>{{ evento.id }}</td>
+                          <td>
+                            {% if evento.terminado %}
+                              ✅
+                            {% else %}
+                              ❌
+                            {% endif %}
+                          </td>
                       </tr>
                     {% endfor %}
                   </tbody>
