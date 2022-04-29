@@ -4,6 +4,11 @@ from anfitrion import views
 
 urlpatterns = [
     path(
+        route='evento/confirmar/',
+        view=views.confirm_view,
+        name="confirmar"
+    ),
+    path(
         route='menu/',
         view=views.MenuView.as_view(),
         name='menu'
@@ -24,7 +29,7 @@ urlpatterns = [
         name='logout'
     ),
     path(
-        route='crear/',
+        route='evento/crear/',
         view=views.create_view,
         name='crear'
     ),

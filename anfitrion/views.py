@@ -1,20 +1,26 @@
 
-import email
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, FormView, CreateView
+from django.views.generic import TemplateView, FormView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import AnfitrionForm, EventForm
+from .forms import AnfitrionForm
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from listaDeRegalos.models import ListaDeRegalos
 from .models import Evento, Anfitrion
 
 
+@login_required
+def confirm_view(request):
+    me = Anfitrion.objects.get(email=request.user.email)
+    evento = Evento.objects.filter(anfitrion=me).last()
+    context = ListaDeRegalos.objects.filter(type=evento.event_type)
+    return render(request,'anfitrion/confirmar.html', {'evento': context})
+
 class MenuView(LoginRequiredMixin,TemplateView):
     template_name = 'anfitrion/home.html'
 
-@login_required
+@login_required #Puedes usar los formularios de django
 def create_view(request):
     if request.method == "POST":
         me = Anfitrion.objects.get(email=request.user.email)
@@ -58,7 +64,7 @@ def create_view(request):
         evento.lista_regalo.set(lista_regalo)
         evento.guests = guests
         evento.save()
-        return redirect('anfitrion:menu')
+        return redirect('anfitrion:confirmar')
 
     return render(request, 'anfitrion/event.html')
 

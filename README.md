@@ -95,7 +95,7 @@ Dependiendo que usuario seas los comandos pueden cambiar, asi que presta atencio
     
 ### Contribuye al proyecto siendo CONTRIBUTOR
 
-Descarga el proyecto de github a tu computadora, crea una nueva rama con el comando:
+Haz un fork del proyecto, descargalo de github a tu computadora, crea una nueva rama con el comando:
 ```
 git checkout -b 'nombre_de_rama'
 ```
