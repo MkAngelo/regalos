@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Comprar Regalos</title>
+{% endblock head_content %}
+
+{% block container %}
+    {% load static %}
+    {% if regalos %} 
+        <h4>Aqui esta la lista de regalos perfectos</h4>
+        {{ relalos.size }}
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Selecciona</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Tienda</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for regalo in regalos %}
+                    <tr>
+                        <td><a href="{% url 'pagar' event_k regalo.type regalo.pk %}">Ver</a></td>
+                        <td>{{ regalo.description }}</td>
+                        <td>{{ regalo.store }}</td>
+                        <td>{{ regalo.price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %} 
+        <h1>Lo sentimos la invitacion cuenta con un error :(</h1> 
+    {% endif %}
+{% endblock container %}

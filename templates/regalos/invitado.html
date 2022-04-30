@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Comprar Regalos</title>
+{% endblock head_content %}
+
+{% block container %}
+    {% load static %}
+    <h1>Bienvenido</h1>
+    <div class="card">
+        <div class="card-header">
+          Invitacion
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Hola!</h5>
+          <p class="card-text">
+              {{ evento.anfitrion.first_name }} te invita a festejar el dia {{ evento.date.day }}-{{ evento.date.month }}-{{ evento.date.year }} a las {{ evento.time }} hora CDMX, para ello necesitas un regalo, 
+              pero no te preocupes, aqui puedes comprarlo de acuerdo a la lista de regalos que seleccionamos especificamente para este evento 
+              asi podras disfrutar de la fiesta sin preocupaciones.
+          </p>
+          <p>
+              Att. Regalos.mx
+          </p>
+          <a href="{% url 'compra' evento.id evento.event_type %}" class="btn btn-warning">COMPRAR REGALOS</a>
+        </div>
+      </div>
+{% endblock container %}

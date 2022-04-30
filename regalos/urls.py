@@ -22,6 +22,9 @@ import regalos.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.InicioView.as_view(), name='inicio'),
-    #path('manager/', include(('administrator.urls', 'administrator'), namespace="administrator")),
+    path('invitado/<int:id>/', views.InvitadoView.as_view(), name='invitado'),
+    path('invitado/<int:event_id>/<str:event_type>/', views.compra_view, name='compra'),
+    path('invitado/<int:event_id>/<str:event_type>/<int:regalo_id>/', views.pagar_view, name='pagar'),
+    path('invitado/completado/', views.completado_view, name='completado'),
     path('anfitrion/', include(('anfitrion.urls', 'anfitrion'), namespace='anfitrion')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

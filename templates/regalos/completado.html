@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Pagar Regalos</title>
+{% endblock head_content %}
+
+{% block container %}
+    {% load static %}
+    <div style="text-align: center;">
+        <h1>FELICIDADES TU COMPRA FUE TODO UN EXITO!</h1>
+        <div class="text-center">
+            <img src="{% static 'img/completado.jpg' %}" class="rounded" alt="regalos.mx" width="50%">
+        </div>
+        <br>
+        <p>Apartir de ahora nosotros nos encargamos, disfruta tu evento y ten un buen dia!</p>
+        <a href="{% url 'inicio' %}" class="btn btn-secondary btn-sm" role="button">Ir al inicio</a>
+    </div>
+{% endblock container %}

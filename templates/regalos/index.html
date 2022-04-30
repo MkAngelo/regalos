@@ -10,28 +10,30 @@
         <h1>Crea recuerdos memorables para ti y tus seres queridos.</h1>
     </div>
     <br><br>
-    <div class="row" style="text-align: center;">
+    <div class="row">
         <div class="col-sm-6">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">INVITADOS</h5>
               <p class="card-text">
-                  Los invitados cuentan con un codigo de acceso, con dicho codigo podran ver la lista de regalos personalizada del
-                  festejado para comprar el mejor y hacer de eso un momento inigualable.
+                  Los invitados cuentan con un link de acceso, con el que podran ver la lista de regalos personalizada del
+                  festejado para comprar el mejor y hacer de eso un momento inigualable. <br> <br>
+                  Recuerda que tu link debio de llegar a tu correo (revisa en spam). En caso de no contar con link, no dudes 
+                  en comunicarte con el anfitrion del evento.
               </p>
-              <form class="row">
+              {% comment %} <form class="row" method="POST" action="#">
                 <div class="col-sm-7">
                   <input type="text" class="form-control" id="codigo" placeholder="290180">
                 </div>
                 <div class="col-sm-4">
                   <button type="submit" class="btn btn-info mb-3">TENGO MI CODIGO!</button>
                 </div>
-              </form>
+              </form> {% endcomment %}
               {% comment %} <a href="#" class="btn btn-info">TENGO MI CODIGO!</a> {% endcomment %}
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6" style="text-align: center;">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">ANFITRIONES</h5>

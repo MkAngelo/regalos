@@ -9,9 +9,7 @@
     <h1>Crear evento</h1>
 
     {% if form.errors %}
-        {% for e in form.errors %}
         <p class="alert alert-danger"><strong>Upps... tienes algunos erroes</strong></p>
-        {% endfor %}
     {% endif %}
 
     <form action="{% url 'anfitrion:crear' %}" method="post">

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block head_content %}
+    <title>Pagar Regalos</title>
+{% endblock head_content %}
+
+{% block container %}
+    {% load static %}
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Informacion del producto</h2>
+            {% if regalo.image %}
+                <img src="{{ regalo.image }}" class="rounded mx-auto d-block" alt="...">
+            {% else %}
+                <img src="{% static 'img/regalo.jpg' %}" class="rounded mx-auto d-block" alt="Regalo sorpresa" width="50%">
+            {% endif %}
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{ regalo.description }}</h5>
+                  <p class="card-text">
+                      Costo: ${{ regalo.price }} MXN <br>
+                      Tienda: {{ regalo.store}} <br>
+                      Entrega: Un dia antes del evento
+                  </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <form action="{% url 'pagar' event_id event_type regalo.pk %}" method="POST">
+                {% csrf_token %}
+                <h2>
+                    Metodo de pago
+                    <img src="{% static 'img/tarjetas.jpeg' %}" width="10%" alt="...">
+                </h2>
+                {% if form.errors %}
+                    <p class="alert alert-danger"><strong>Upps... tienes algunos erroes</strong></p>
+                {% endif %}
+                <!-- name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control {% if form.name.errors %}is-invalid{% endif %}" name='name' required="true" placeholder="Juan Manuel Garcia Estrada" value="{% if form.errors %}{{ form.name.value }}{% endif %}">
+                </div>
+                <!-- card num -->
+                <div class="mb-3">
+                    <label for="card" class="form-label">Numero de la tarjeta</label>
+                    <input type="text" class="form-control {% if form.card.errors %}is-invalid{% endif %}" name='card' required="true" placeholder="XXXX-XXXX-XXXX-XXXX" value="{% if form.errors %}{{ form.card.value }}{% endif %}">
+                </div>
+                <!-- cvv -->
+                <div class="mb-3">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control {% if form.cvv.errors %}is-invalid{% endif %}" name='cvv' required="true" placeholder="000" value="{% if form.errors %}{{ form.cvv.value }}{% endif %}">
+                </div>
+                <button type="submit" class="btn btn-primary">Pagar</button>
+            </form>
+        </div>
+    </div>
+{% endblock container %}
