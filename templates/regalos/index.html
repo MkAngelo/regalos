@@ -19,7 +19,15 @@
                   Los invitados cuentan con un codigo de acceso, con dicho codigo podran ver la lista de regalos personalizada del
                   festejado para comprar el mejor y hacer de eso un momento inigualable.
               </p>
-              <a href="#" class="btn btn-info">TENGO MI CODIGO!</a>
+              <form class="row">
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" id="codigo" placeholder="290180">
+                </div>
+                <div class="col-sm-4">
+                  <button type="submit" class="btn btn-info mb-3">TENGO MI CODIGO!</button>
+                </div>
+              </form>
+              {% comment %} <a href="#" class="btn btn-info">TENGO MI CODIGO!</a> {% endcomment %}
             </div>
           </div>
         </div>
@@ -30,11 +38,16 @@
               <p class="card-text">
                   Si estas registrado en la plataforma, puedes crear nuevos eventos asi como modificar tus eventos existentes, para 
                   disfrutar de la compañía de tus seres queridos.
-              </p>
+              </p><br>
               <a href="{% url 'anfitrion:login' %}" class="btn btn-info">TENGO CUENTA!</a>
               <a href="{% url 'anfitrion:signup' %}" class="btn btn-info">CREAR CUENTA!</a>
             </div>
           </div>
         </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br>
+    <hr>
+    <div style="text-align: center;">
+      <p>© 2022 Company, Inc</p>
     </div>
 {% endblock container %}
