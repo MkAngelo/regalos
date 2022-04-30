@@ -6,7 +6,10 @@
 
 {% block container %}
     {% load static %}
-    
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+      <strong>Consejo!</strong> Si tu invitado no tiene link, puedes usar el codigo del evento de la siguiente forma: <i>localhost:invitado/codigo/</i>.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <img src="{% static 'img/perfil.jpg' %}" class="rounded-circle mx-auto d-block border border-4" width="15%" alt="Foto de perfil">
     <div class="card" style="text-align: center">
         <div class="card-body">
