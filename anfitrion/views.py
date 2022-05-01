@@ -16,16 +16,16 @@ def confirm_view(request):
     me = Anfitrion.objects.get(email=request.user.email)
     evento = Evento.objects.filter(anfitrion=me).last()
     context = ListaDeRegalos.objects.filter(type=evento.event_type)
-    return render(request,'anfitrion/confirmar.html', {'evento': context})
+    return render(request,'anfitrion/confirmar.html', {'regalos': context})
 
-class MenuView(LoginRequiredMixin,TemplateView):
-    template_name = 'anfitrion/home.html'
-    
 @login_required
 def menu_view(request):
     me = Anfitrion.objects.get(email=request.user.email)
-    context = Evento.objects.filter(anfitrion=me).order_by('terminado')
-    return render(request, 'anfitrion/home.html', {'eventos': context})
+    eventos = Evento.objects.filter(anfitrion=me).order_by('terminado')
+
+    context = {'eventos': eventos}
+
+    return render(request, 'anfitrion/home.html', context)
 
 @login_required
 def create_view(request):

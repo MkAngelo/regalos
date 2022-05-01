@@ -28,38 +28,42 @@
                       <th scope="col">Nombre del festejado</th>
                       <th scope="col">Fecha</th>
                       <th scope="col">Codigo</th>
+                      <th scope="col">Link</th>
                       <th scope="col">Concluido</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for evento in eventos %}
-                      <tr>
-                          <td>
-                            {% if evento.event_type == 'BO' %}
-                              Boda
-                            {% elif evento.event_type == 'XV' %}
-                              XV Años
-                            {% elif evento.event_type == 'BA' %}
-                              Bautizo
-                            {% elif evento.event_type == 'IN' %}
-                              Infantil
-                            {% elif evento.event_type == 'PH' %}
-                              Para Él
-                            {% elif evento.event_type == 'PM' %}
-                              Para Ella
-                            {% endif %}
-                          </td>
-                          <td>{{ evento.festejado_first_name }} {{ evento.festejado_last_name }}</td>
-                          <td>{{ evento.date }} </td>
-                          <td>{{ evento.id }}</td>
-                          <td>
-                            {% if evento.terminado %}
-                              ✅
-                            {% else %}
-                              ❌
-                            {% endif %}
-                          </td>
-                      </tr>
+                        <tr>
+                            <td>
+                              {% if evento.event_type == 'BO' %}
+                                Boda
+                              {% elif evento.event_type == 'XV' %}
+                                XV Años
+                              {% elif evento.event_type == 'BA' %}
+                                Bautizo
+                              {% elif evento.event_type == 'IN' %}
+                                Infantil
+                              {% elif evento.event_type == 'PH' %}
+                                Para Él
+                              {% elif evento.event_type == 'PM' %}
+                                Para Ella
+                              {% endif %}
+                            </td>
+                            <td>{{ evento.festejado_first_name }} {{ evento.festejado_last_name }}</td>
+                            <td>{{ evento.date }} </td>
+                            <td>{{ evento.id }}</td>
+                            <td>
+                              <a href="{% url 'invitado' evento.id %}">localhost:8000/invitado/{{ evento.id }}/</a>
+                            </td> 
+                            <td>
+                              {% if evento.terminado %}
+                                ✅
+                              {% else %}
+                                ❌
+                              {% endif %}
+                            </td>
+                        </tr>
                     {% endfor %}
                   </tbody>
               </table>
