@@ -32,7 +32,7 @@ class CompraView(DetailView):
 
 def compra_view(request, event_id, event_type):
     lista_regalo = ListaDeRegalos.objects.filter(type=event_type)
-    context = {'regalos': lista_regalo, 'event_k': event_id}
+    context = {'regalos': lista_regalo, 'event_k': event_id, 'event_type': event_type}
     return render(request, 'regalos/compra.html', context)
 
 def pagar_view(request, event_id, event_type, regalo_id):

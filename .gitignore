@@ -15,3 +15,7 @@ venv/
 .LSOverride
 
 media/
+
+# Data
+creator.py
+*.csv
