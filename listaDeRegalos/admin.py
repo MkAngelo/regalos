@@ -4,6 +4,7 @@ from .models import ListaDeRegalos
 # Register your models here.
 class ListaDeRegalosAdmin(admin.ModelAdmin):
     list_display = (
+        'pk',
         'type',
         'description',
         'store',
@@ -12,8 +13,7 @@ class ListaDeRegalosAdmin(admin.ModelAdmin):
     )
     list_display_links = ('type','store')
     search_fields = (
+        'pk',
         'type',
-        'store',
-        'price'
     )
 admin.site.register(ListaDeRegalos, ListaDeRegalosAdmin)

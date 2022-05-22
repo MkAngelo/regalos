@@ -43,6 +43,7 @@ def pagar_view(request, event_id, event_type, regalo_id):
         if form.is_valid():
             evento = Evento.objects.get(id=event_id)
             evento.total = evento.total + 1
+            evento.regalos += str(regalo_id) + ","
             evento.save()
             return redirect('completado')
         else:

@@ -14,7 +14,33 @@
         <div class="card-body">
           <h5 class="card-title">Hola!</h5>
           <p class="card-text">
-              {{ evento.anfitrion.first_name }} te invita a festejar el dia {{ evento.date.day }}-{{ evento.date.month }}-{{ evento.date.year }} a las {{ evento.time }} hora CDMX, para ello necesitas un regalo, 
+              {{ evento.anfitrion.first_name }} te invita a festejar el dia {{ evento.date.day }} de
+              {% if evento.date.month == 1 %}
+              Enero
+              {% elif evento.date.month == 2 %}
+              Febrero
+              {% elif evento.date.month == 3 %}
+              Marzo
+              {% elif evento.date.month == 4 %}
+              Abril
+              {% elif evento.date.month == 5 %}
+              Mayo
+              {% elif evento.date.month == 6 %}
+              Junio
+              {% elif evento.date.month == 7 %}
+              Julio
+              {% elif evento.date.month == 8 %}
+              Agosto
+              {% elif evento.date.month == 9 %}
+              Septiembre
+              {% elif evento.date.month == 10 %}
+              Octubre
+              {% elif evento.date.month == 11 %}
+              Noviembre
+              {% else %}
+              Diciembre
+              {% endif %}
+              del {{ evento.date.year }} a las {{ evento.time }} hora CDMX en {{ evento.address }}, para ello necesitas un regalo, 
               pero no te preocupes, aqui puedes comprarlo de acuerdo a la lista de regalos que seleccionamos especificamente para este evento 
               asi podras disfrutar de la fiesta sin preocupaciones.
           </p>

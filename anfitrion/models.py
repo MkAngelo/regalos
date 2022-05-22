@@ -31,6 +31,7 @@ class Evento(models.Model):
     festejado_last_name = models.CharField(max_length=50, blank=False, null=False)
     festejado_age = models.PositiveIntegerField(null=False, default=0)
     lista_regalo = models.ManyToManyField(ListaDeRegalos)
+    regalos = models.CharField(max_length=300, blank=True) # Regalos comprados
     card = models.CharField(max_length=19)
     cvv = models.CharField(max_length=3)
     terminado = models.BooleanField(default=False)
