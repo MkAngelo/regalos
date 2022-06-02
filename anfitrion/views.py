@@ -10,12 +10,19 @@ from listaDeRegalos.models import ListaDeRegalos
 from .models import Evento, Anfitrion
 import datetime
 
+# Email
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 @login_required
 def confirm_view(request):
     me = Anfitrion.objects.get(email=request.user.email)
     evento = Evento.objects.filter(anfitrion=me).last()
     context = ListaDeRegalos.objects.filter(type=evento.event_type)
+    link = "localhost:8000/invitado/" + str(evento.id)
+    to = evento.guests.split(',')
+    send_mail("Te llego una invitacion", f"El link de tu evento es: {link}","Regalos Mx <noreply@regalosmx.com>", to)
     return render(request,'anfitrion/confirmar.html', {'regalos': context})
 
 @login_required

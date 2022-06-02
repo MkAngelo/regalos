@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'anfitrion',
     'listaDeRegalos',
+    "anymail",
 ]
 
 MIDDLEWARE = [
@@ -144,6 +145,20 @@ LOGIN_REDIRECT_URL = '/anfitrion/menu'
 #AUTH_USER_MODEL = 'anfitrion.CustomUser'
 #AUTH_USER_MODEL = 'users.CustomUser'
 AUTH_USER_MODEL = 'anfitrion.Anfitrion'
+
+# EMAIL SETTINGS
+
+#ANYMAIL = {
+    # (exact settings here depend on your ESP...)
+#    "MAILGUN_API_KEY": config('MAILGUN_KEY'),
+#    "MAILGUN_SENDER_DOMAIN": 'mg.example.com',  # your Mailgun domain, if needed
+#}
+#EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+#DEFAULT_FROM_EMAIL = "Regalos Mx <noreply@regalosmx.com>"  # if you don't already have this in settings
+#SERVER_EMAIL = "your-server@example.com"  # ditto (default from-email for Django errors)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
