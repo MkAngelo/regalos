@@ -92,24 +92,3 @@ Dependiendo que usuario seas los comandos pueden cambiar, asi que presta atencio
     ```
     
     Ingresa a [localhost:8000/](localhost:8000/) para probar el sistema como usuario 'normal' o ingresa a [localhost:8000/admin/](localhost:8000/admin/) y prueba la app como administrador.
-    
-### Contribuye al proyecto siendo CONTRIBUTOR
-
-Haz un fork del proyecto, descargalo de github a tu computadora, crea una nueva rama con el comando:
-```
-git checkout -b 'nombre_de_rama'
-```
-Realiza los cambios que consideres pertinentes, guardalos y antes de hacer un merge asegurate de tener la ultima version del proyecto usando los siguientes comandos:
-```
-git checkout main
-git pull origin main
-```
-Completa la fusion de las ramas con el comando:
-```
-git merge 'nombre_de_rama' -m "Un comentario de los cambios"
-```
-Finalmente envia tus cambios al repositorio usando:
-```
-git push origin main
-```
-    

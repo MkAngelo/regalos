@@ -1,5 +1,5 @@
-django
-django-bootstrap-v5
-python-decouple
-pillow
+django==4.0.4
+django-bootstrap-v5==1.0.11
+python-decouple==3.6
+pillow==9.1.0
 django-anymail[mailgun]
