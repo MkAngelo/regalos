@@ -91,4 +91,4 @@ Dependiendo que usuario seas los comandos pueden cambiar, asi que presta atencio
     python3 manage.py runserver
     ```
     
-    Ingresa a [localhost:8000/](localhost:8000/) para probar el sistema como usuario 'normal' o ingresa a [localhost:8000/admin/](localhost:8000/admin/) y prueba la app como administrador.
+    Ingresa a **[localhost:8000/](localhost:8000/)** para probar el sistema como usuario 'cliente' o ingresa a **[localhost:8000/admin/](localhost:8000/admin/)** y prueba la app como 'administrador', este modo te permitira agregar nuevos regalos, gestionar usuarios, etc.
