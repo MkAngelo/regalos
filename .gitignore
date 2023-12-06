@@ -19,3 +19,6 @@ media/
 # Data
 creator.py
 *.csv
+
+# Executable
+*.exe
